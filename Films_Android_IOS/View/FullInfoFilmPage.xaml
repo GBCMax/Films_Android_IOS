@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Films_Android_IOS.View.FullInfoFilmPage"
+             xmlns:vm="clr-namespace:Films_Android_IOS.ViewModel"
+             Title="{Binding Films.Name}">
+    <ContentPage.BindingContext>
+        <vm:FullInfoFilmViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовки колонок -->
+        <Grid Grid.Row="0" BackgroundColor="LightGray" Padding="5" VerticalOptions="StartAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Описание" HorizontalOptions="Center"/>
+            <Label Grid.Column="1" Text="Актеры" HorizontalOptions="Center"/>
+        </Grid>
+
+        <!-- Данные -->
+        <Grid Grid.Row="1" BackgroundColor="BlueViolet" Margin="0" Padding="1" ColumnSpacing="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Text="{Binding Films.Description}" Style="{StaticResource GridLabelStyle}"/>
+            <Label Grid.Column="1" Text="{Binding Films.ActorsString}" Style="{StaticResource GridLabelStyle}"/>
+        </Grid>
+    </Grid>
+</ContentPage>
